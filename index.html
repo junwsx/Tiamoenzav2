@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ciro & Vincenza ❤️</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       SEZIONE 1: INTRO CINEMATOGRAFICA + ACCESSO
+       ============================================================ -->
+  <div id="intro-screen" >
+    <!-- Pioggia di particelle/stelle in background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Logo / titolo animato -->
+    <div id="intro-logo">
+      <span class="intro-heart">❤</span>
+    </div>
+
+    <!-- Form di accesso -->
+    <div id="access-form" class="hidden">
+      <p class="access-question">Come ti chiami?</p>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="name-input"
+          placeholder="Il tuo nome..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="name-submit" aria-label="Entra">→</button>
+      </div>
+      <p id="name-error" class="error-msg hidden">Questo sito è stato creato per una persona speciale...</p>
+    </div>
+
+    <!-- Messaggio di benvenuto (appare dopo nome corretto) -->
+    <div id="welcome-msg" class="hidden">
+      <p class="welcome-text">Benvenuta amore ❤️</p>
+      <p class="welcome-sub">Anche quando litighiamo, sei la mia certezza.</p>
+      <button id="start-journey" class="btn-gold">Inizia il viaggio</button>
+      <p class="welcome-sub">Ps: alza il volume..!</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SITO PRINCIPALE (nascosto finché non si fa accesso)
+       ============================================================ -->
+  <main id="main-site" class="hidden">
+
+    <!-- AUDIO PLAYER (nascosto — si avvia dopo l'intro) -->
+    <!-- 
+      ★★★ ISTRUZIONI AUDIO ★★★
+      1. Rinomina il tuo file MP3 in "completamente.mp3"
+      2. Mettilo nella stessa cartella di index.html
+      3. Il player si avvierà automaticamente dopo l'accesso
+    -->
+    <audio id="bg-music" loop>
+      <source src="completamente.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Player visibile minimale (angolo basso a destra) -->
+    <div id="music-player">
+      <button id="music-toggle" title="Play/Pausa musica">
+        <span id="music-icon">♪</span>
+        <span class="music-label">Completamente</span>
+      </button>
+    </div>
+
+    <!-- Cuori fluttuanti in background (persistenti) -->
+    <div id="hearts-bg" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         SEZIONE 2: HOMEPAGE — LA COLONNA SONORA
+         ============================================================ -->
+    <section id="hero" class="section">
+      <div class="hero-content">
+        <p class="hero-eyebrow">24 agosto 2022 — per sempre</p>
+        <h1 class="hero-title">La storia più bella<br/>della mia vita:<br/><em>Noi</em></h1>
+        <p class="hero-sub">Questo sito esiste per una sola persona.</p>
+        <div class="scroll-hint">
+          <span>Scorri</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+      <div class="hero-deco" aria-hidden="true">
+        <div class="gold-ring ring-1"></div>
+        <div class="gold-ring ring-2"></div>
+        <div class="gold-ring ring-3"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 3: TIMELINE DELLA NOSTRA STORIA
+         ============================================================ -->
+    <section id="timeline" class="section">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">La nostra storia</p>
+        <h2 class="section-title">Ogni momento conta</h2>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+
+        <!-- Evento 1: I biglietti dei Coldplay -->
+        <div class="timeline-item reveal" data-side="left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">Il pre-inizio</div>
+            <h3 class="timeline-title">I biglietti dei Coldplay</h3>
+            <p class="timeline-text">
+              Non stavamo ancora ufficialmente insieme, ma sentivamo di costruire qualcosa di grande. 
+              Erano biglietti ambitissimi, sold-out in un minuto, per l'anno successivo. 
+              Ma io li ho presi, perché sapevo che ci saresti stata accanto a me. tu ed io.
+            </p>
+            <!-- 
+              ★★★ FOTO ★★★
+              Aggiungi qui la foto relativa a questo momento.
+              Esempio: <img src="foto/coldplay.jpg" alt="I biglietti dei Coldplay" class="timeline-photo" />
+              Se non hai foto, rimuovi il tag img-placeholder qui sotto.
+            -->
+            <img src="foto/timeline/IMG_4037.jpg" alt="Descrizione" />
+          </div>
+        </div>
+
+        <!-- Evento 2: 24 Agosto 2022 -->
+        <div class="timeline-item reveal" data-side="right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card card-highlight">
+            <div class="timeline-date">24 agosto 2022</div>
+            <h3 class="timeline-title">Il giorno in cui è iniziato tutto</h3>
+            <p class="timeline-text">
+              La sera in cui siamo usciti a Cava de' Tirreni. 
+              Sulle scale della chiesa centrale, ti ho chiesto: Ti vuoi mettere con me?.
+            </p>
+           <img src="foto/timeline/1.png" alt="Descrizione" />
+          </div>
+        </div>
+
+        <!-- Quasi 4 anni insieme -->
+        <div class="timeline-item reveal" data-side="left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card card-highlight">
+            <div class="timeline-date">2022 → oggi</div>
+            <h3 class="timeline-title">Quasi quattro anni</h3>
+            <p class="timeline-text">
+              Alti e bassi, risate e pianti, crescita e condivisione. 
+              Ogni momento — anche quelli difficili — ha costruito qualcosa di unico. 
+              Questa non è solo una storia d'amore. Siamo noi.
+            </p>
+            <img src="foto/timeline/IMG_2592.jpeg" alt="Descrizione" />
+          </div>
+        </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 4: MOTIVI PER CUI TI AMO
+         ============================================================ -->
+    <section id="reasons" class="section">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Dal profondo</p>
+        <h2 class="section-title">Perché ti amo</h2>
+        <p class="section-subtitle">Clicca su ogni card per scoprire cosa mi fai sentire</p>
+      </div>
+
+      <div class="reasons-grid">
+
+        <div class="reason-card reveal" tabindex="0">
+          <div class="reason-front">
+            <span class="reason-icon">🎻</span>
+            <p>Quando suoni il violino</p>
+          </div>
+          <div class="reason-back">
+            <p>Quando suoni il violino, il mondo smette di esistere. Sei arte pura, ed io mi sento l'uomo più fortunato al mondo.</p>
+          </div>
+        </div>
+
+        <div class="reason-card reveal" tabindex="0">
+          <div class="reason-front">
+            <span class="reason-icon">😊</span>
+            <p>Il tuo sorriso</p>
+          </div>
+          <div class="reason-back">
+            <p>Il tuo sorriso è la cosa più bella che i miei occhi abbiano mai visto. È il mio posto sicuro.</p>
+          </div>
+        </div>
+
+        <div class="reason-card reveal" tabindex="0">
+          <div class="reason-front">
+            <span class="reason-icon">🔥</span>
+            <p>Quando ti arrabbi</p>
+          </div>
+          <div class="reason-back">
+            <p>Quando ti arrabbi ma poi ti sciogli — quel momento in cui la tua durezza cede — mi fai capire che mi ami davvero.</p>
+          </div>
+        </div>
+
+        <div class="reason-card reveal" tabindex="0">
+          <div class="reason-front">
+            <span class="reason-icon">🌙</span>
+            <p>La nostra quiete</p>
+          </div>
+          <div class="reason-back">
+            <p>Stare in silenzio accanto a te è più pieno di qualsiasi conversazione con chiunque altro.</p>
+          </div>
+        </div>
+
+        <div class="reason-card reveal" tabindex="0">
+          <div class="reason-front">
+            <span class="reason-icon">💪</span>
+            <p>La tua forza</p>
+          </div>
+          <div class="reason-back">
+            <p>Sei la persona più forte che conosco, anche quando pensi di non esserlo. Mi insegni il coraggio ogni giorno.</p>
+          </div>
+        </div>
+
+        <div class="reason-card reveal" tabindex="0">
+          <div class="reason-front">
+            <span class="reason-icon">🌍</span>
+            <p>Ogni avventura con te</p>
+          </div>
+          <div class="reason-back">
+            <p>Il mondo è più bello con i tuoi occhi vicino ai miei. Ogni posto che visitiamo diventa un ricordo eterno.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 5: GALLERY ROMANTICA (SWIPE MOBILE)
+         ============================================================ -->
+    <section id="gallery" class="section">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">I nostri momenti</p>
+        <h2 class="section-title">La nostra gallery</h2>
+        <p class="section-subtitle">Uno sguardo ai nostri anni passati insieme</p>
+      </div>
+
+      <!-- ★★★ ANNO 1 ★★★ -->
+      <div class="year-gallery reveal">
+        <div class="year-gallery-header">
+          <h3 class="year-gallery-title">1 ° Anno Insieme</h3>
+          <p class="year-gallery-sub">Agosto 2022 — Agosto 2023</p>
+        </div>
+        <div class="gallery-container">
+          <div class="gallery-track" id="gallery-track-1">
+            <div class="gallery-slide">
+              <img src="foto/1 anno/IMG_4048.JPG" alt="descrizione" />
+              <p class="gallery-caption">Il nostro primo ricordo... ti ricordi che pensavi che volevo uscire il cazzo? hahahah - Vietri</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/1 anno/IMG_4050.JPG" alt="descrizione" />
+              <p class="gallery-caption">Il nostro primo sushi - One Sushi</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/1 anno/IMG_4051.JPG" alt="descrizione" />
+              <p class="gallery-caption">Primo Natale insieme - Palazzo Reale Napoli</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/1 anno/IMG_4064.JPG" alt="descrizione" />
+              <p class="gallery-caption">Compleanno Insieme - Fresconi</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/1 anno/IMG_4065.JPG" alt="descrizione" />
+              <p class="gallery-caption">Finalmente arrivato il concerto dei Coldplay... quante volte abbiamo pensato che non andavamo.. ed invece... - Napoli</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/1 anno/IMG_4069.JPG" alt="descrizione" />
+              <p class="gallery-caption">Primo Anniversario - Laghi Nabi</p>
+            </div>
+          </div>
+          <div class="gallery-dots" id="gallery-dots-1"></div>
+          <button class="gallery-btn gallery-prev" data-track="1" aria-label="Precedente">‹</button>
+          <button class="gallery-btn gallery-next" data-track="1" aria-label="Successiva">›</button>
+        </div>
+      </div>
+
+      <!-- ★★★ ANNO 2 ★★★ -->
+      <div class="year-gallery reveal">
+        <div class="year-gallery-header">
+          <h3 class="year-gallery-title">Secondo Anno Insieme</h3>
+          <p class="year-gallery-sub">Agosto 2023 — Agosto 2024</p>
+        </div>
+        <div class="gallery-container">
+          <div class="gallery-track" id="gallery-track-2">
+            <div class="gallery-slide">
+              <img src="foto/2 anno/13.jpg" alt="descrizione" />
+              <p class="gallery-caption">Vacanze di Natale - Castello di Limatola</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/2 anno/20.jpg" alt="descrizione" />
+              <p class="gallery-caption">Vigilia di Capodanno - Nocera Inferiore</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/2 anno/32.jpg" alt="descrizione" />
+              <p class="gallery-caption">Il ciambellonee il ciambellonee Fatto Con Tanto Amoreeeeeee!</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/2 anno/63.jpg" alt="descrizione" />
+              <p class="gallery-caption">Concerto Flor - Palapartenope Napoli</p>
+            </div>
+             <div class="gallery-slide">
+              <img src="foto/2 anno/68.jpg" alt="descrizione" />
+              <p class="gallery-caption">Passeggiata a Cavallo - Castel Volturno</p>
+            </div>
+             <div class="gallery-slide">
+              <img src="foto/2 anno/78.jpg" alt="descrizione" />
+              <p class="gallery-caption">Eventiiiii - Lettere</p>
+            </div>
+             <div class="gallery-slide">
+              <img src="foto/2 anno/IMG_20240821_084907_027.jpg" alt="descrizione" />
+              <p class="gallery-caption">Che fisiciiiiiiiii - Pugliaa</p>
+            </div>
+          </div>
+          <div class="gallery-dots" id="gallery-dots-2"></div>
+          <button class="gallery-btn gallery-prev" data-track="2" aria-label="Precedente">‹</button>
+          <button class="gallery-btn gallery-next" data-track="2" aria-label="Successiva">›</button>
+        </div>
+      </div>
+
+      <!-- ★★★ ANNO 3 ★★★ -->
+      <div class="year-gallery reveal">
+        <div class="year-gallery-header">
+          <h3 class="year-gallery-title">3 ° Anno Insieme</h3>
+          <p class="year-gallery-sub">Agosto 2024 — Agosto 2025</p>
+        </div>
+        <div class="gallery-container">
+          <div class="gallery-track" id="gallery-track-3">
+            <div class="gallery-slide">
+              <img src="foto/3 anno/1.jpg" alt="descrizione" />
+              <p class="gallery-caption">Monte Ciocci after concorso - Roma</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/3 anno/2.jpg" alt="descrizione" />
+              <p class="gallery-caption">Natale 2024 - Gaeta</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/3 anno/3.jpg" alt="descrizione" />
+              <p class="gallery-caption">Violinista VInceza Carmellino #siscrocca - Palazzo San Teodoro</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/3 anno/4.jpg" alt="descrizione" />
+              <p class="gallery-caption">Enza in una classica giornata sposata: cucina e la scopo. tanto. - Terra di Vento</p>
+            </div>
+               <div class="gallery-slide">
+              <img src="foto/3 anno/5.jpg" alt="descrizione" />
+              <p class="gallery-caption">Pedalataaaa - Angri</p>
+            </div>
+               <div class="gallery-slide">
+              <img src="foto/3 anno/6.jpg" alt="descrizione" />
+              <p class="gallery-caption">La quieteee - Castellabate</p>
+            </div>
+               <div class="gallery-slide">
+              <img src="foto/3 anno/7.jpg" alt="descrizione" />
+              <p class="gallery-caption">Sarà per sempre SIIIII - Villa Regina</p>
+            </div>
+               <div class="gallery-slide">
+              <img src="foto/3 anno/8.jpg" alt="descrizione" />
+              <p class="gallery-caption">Primo party techno - Napoli Ex base Nato</p>
+            </div>
+          </div>
+          <div class="gallery-dots" id="gallery-dots-3"></div>
+          <button class="gallery-btn gallery-prev" data-track="3" aria-label="Precedente">‹</button>
+          <button class="gallery-btn gallery-next" data-track="3" aria-label="Successiva">›</button>
+        </div>
+      </div>
+
+      <!-- ★★★ ANNO 4 ★★★ -->
+      <div class="year-gallery reveal">
+        <div class="year-gallery-header">
+          <h3 class="year-gallery-title">Quarto Anno Insieme in corso..</h3>
+          <p class="year-gallery-sub">Agosto 2025 — oggi</p>
+        </div>
+        <div class="gallery-container">
+          <div class="gallery-track" id="gallery-track-4">
+            <div class="gallery-slide">
+              <img src="foto/4 anno/1.jpeg" alt="descrizione" />
+              <p class="gallery-caption">After Evento dopo una ricca stagione - Napoli Vomero</p>
+            </div>
+            <div class="gallery-slide">
+             <img src="foto/4 anno/2.jpeg" alt="descrizione" />
+              <p class="gallery-caption">Gite con famiglia - Reggia di Caserta </p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/4 anno/3.jpeg" alt="descrizione" />
+              <p class="gallery-caption">18 esimi - Angri</p>
+            </div>
+            <div class="gallery-slide">
+              <img src="foto/4 anno/4.jpeg" alt="descrizione" />
+              <p class="gallery-caption">Buon Nataleeee 2025 - Luci d'artista Salerno</p>
+            </div>
+             <div class="gallery-slide">
+              <img src="foto/4 anno/5.jpeg" alt="descrizione" />
+              <p class="gallery-caption">Che belliiiiiiiiiiiiiii - Roma</p>
+            </div>
+             <div class="gallery-slide">
+              <img src="foto/4 anno/6.jpeg" alt="descrizione" />
+              <p class="gallery-caption">Cinemaaaaa Buen Camino - The space Salerno</p>
+            </div>
+             <div class="gallery-slide">
+              <img src="foto/4 anno/7.jpeg" alt="descrizione" />
+              <p class="gallery-caption">30 esimo Angelo pizza gratiiiis - Angri</p>
+            </div>
+            
+          </div>
+          <div class="gallery-dots" id="gallery-dots-4"></div>
+          <button class="gallery-btn gallery-prev" data-track="4" aria-label="Precedente">‹</button>
+          <button class="gallery-btn gallery-next" data-track="4" aria-label="Successiva">›</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 6B: IL NOSTRO QUIZ
+         ============================================================ -->
+    <section id="quiz" class="section">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Quanto ci conosci?</p>
+        <h2 class="section-title">Il nostro quiz</h2>
+        <p class="section-subtitle">7 domande su di noi. Niente trucchi — o sai o non sai 😏</p>
+        <p class="section-subtitle">Direttamente dal Ministero dei fidanzati - No risposte falsate di parte 😌</p>
+      </div>
+
+      <div class="quiz-container reveal">
+        <!-- Schermata quiz -->
+        <div id="quiz-play">
+          <div class="quiz-progress-bar"><div id="quiz-progress-fill"></div></div>
+          <p class="quiz-counter" id="quiz-counter">Domanda 1 di 5</p>
+          <p class="quiz-question" id="quiz-question"></p>
+          <div class="quiz-options" id="quiz-options"></div>
+          <p class="quiz-feedback" id="quiz-feedback"></p>
+        </div>
+        <!-- Schermata risultato finale -->
+        <div id="quiz-result" class="hidden">
+          <p class="quiz-score-emoji" id="quiz-score-emoji"></p>
+          <p class="quiz-score-text" id="quiz-score-text"></p>
+          <p class="quiz-score-msg"  id="quiz-score-msg"></p>
+          <button class="btn-gold" id="quiz-restart">Riprova 🔄</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 6C: MEMORY ROMANTICO
+         ============================================================ -->
+    <section id="memory" class="section">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Un gioco per noi</p>
+        <h2 class="section-title">Memory romantico</h2>
+        <p class="section-subtitle">Trova tutte le coppie per sbloccare un messaggio segreto ❤️</p>
+      </div>
+
+      <div class="memory-container reveal">
+        <div class="memory-info">
+          <span id="memory-moves">Mosse: 0</span>
+          <button class="btn-gold" id="memory-restart" style="padding:0.5rem 1.2rem; font-size:0.75rem;">Ricomincia</button>
+        </div>
+        <div class="memory-grid" id="memory-grid"></div>
+        <div id="memory-win" class="memory-win hidden">
+          <p class="memory-win-emoji">🎉</p>
+          <p class="memory-win-text">Finalmente... alla buon ora! lo sapevo che eri una smemorata, però c'è l'hai fatta!</p>
+          <p class="memory-win-msg">Proprio come nella vita — hai trovato la tua metà. E la mia metà sei tu, per me.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 6D: LASCIAMI UN MESSAGGIO
+         ============================================================ -->
+    <section id="message-bottle" class="section">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">La tua voce qui</p>
+        <h2 class="section-title">Lasciami un messaggio</h2>
+        <p class="section-subtitle">Scrivi quello che senti. Resterà qui, solo per noi.</p>
+      </div>
+
+      <div class="bottle-container reveal">
+        <div id="bottle-form-wrapper">
+          <textarea id="bottle-textarea" placeholder="Scrivi qui quello che vuoi dirmi..." rows="5"></textarea>
+          <button class="btn-gold" id="bottle-save">Salva il messaggio 🌊</button>
+        </div>
+        <div id="bottle-saved" class="hidden">
+          <div class="bottle-saved-inner">
+            <span class="bottle-icon">💌</span>
+            <p class="bottle-saved-label">Il tuo messaggio</p>
+            <p class="bottle-saved-text" id="bottle-saved-text"></p>
+            <button class="bottle-edit-btn" id="bottle-edit">Modifica</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 6E: COSA FAREMO INSIEME — IL DADO
+         ============================================================ -->
+    <section id="dice" class="section">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Il futuro che ci aspetta</p>
+        <h2 class="section-title">Cosa faremo insieme</h2>
+        <p class="section-subtitle">Lancia il dado e scopri la prossima avventura 🎲</p>
+      </div>
+
+      <div class="dice-container reveal">
+        <div class="dice-wrapper">
+          <div class="dice" id="dice" aria-label="Dado">
+            <div class="dice-face front">⚀</div>
+          </div>
+        </div>
+        <p class="dice-proposal" id="dice-proposal">Premi il dado per scoprirlo...</p>
+        <button class="btn-gold" id="dice-roll">🎲 Lancia il dado</button>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 6: MAPPA SVG + CONTATORE
+         ============================================================ -->
+    <section id="map-counter" class="section">
+
+      <!-- Contatore doppio -->
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Dal 24 agosto 2022</p>
+        <h2 class="section-title">Siamo insieme da...</h2>
+      </div>
+
+      <div class="counter-wrapper reveal">
+        <div class="counter-grid">
+          <div class="counter-box">
+            <span class="counter-num" id="cnt-days">0</span>
+            <span class="counter-label">Giorni</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-num" id="cnt-hours">0</span>
+            <span class="counter-label">Ore</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-num" id="cnt-minutes">0</span>
+            <span class="counter-label">Minuti</span>
+          </div>
+          <div class="counter-box">
+            <span class="counter-num" id="cnt-seconds">0</span>
+            <span class="counter-label">Secondi</span>
+          </div>
+        </div>
+        <!-- Contatore poetico doppio -->
+        <p class="counter-poetic" id="poetic-counter"></p>
+      </div>
+
+      <!-- Mappa SVG stilizzata Italia + Grecia -->
+      <div class="map-wrapper reveal">
+        <p class="section-eyebrow" style="text-align:center; margin-bottom:1rem;">I nostri luoghi</p>
+        <div class="map-container">
+          <svg id="love-map" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" aria-label="Mappa dei nostri luoghi">
+
+            <!-- Sfondo mare stilizzato -->
+            <rect width="500" height="600" fill="var(--bg-deep)" rx="16"/>
+            <rect width="500" height="600" fill="url(#seaPattern)" rx="16" opacity="0.15"/>
+
+            <defs>
+              <pattern id="seaPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="10" cy="10" r="1" fill="var(--gold)" opacity="0.3"/>
+              </pattern>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- ---- ITALIA (forma molto stilizzata) ---- -->
+            <!-- Stivale nord -->
+            <path d="M 160 80 L 300 75 L 320 100 L 310 130 L 280 140 L 260 160 L 250 200 L 245 240 L 255 280 L 260 320 L 255 360 L 260 390 L 270 420 L 285 440 L 300 460 L 310 480 L 290 490 L 275 470 L 260 445 L 245 420 L 240 390 L 235 360 L 230 330 L 225 300 L 215 270 L 205 240 L 200 200 L 195 160 L 185 130 L 160 110 Z"
+              fill="#2a1a0e" stroke="var(--gold-muted)" stroke-width="1.2" opacity="0.9"/>
+
+            <!-- Sicilia -->
+            <path d="M 175 510 L 215 500 L 230 515 L 220 530 L 195 535 L 175 525 Z"
+              fill="#2a1a0e" stroke="var(--gold-muted)" stroke-width="1" opacity="0.9"/>
+
+            <!-- Sardegna -->
+            <path d="M 115 340 L 140 330 L 150 355 L 145 380 L 120 385 L 108 365 Z"
+              fill="#2a1a0e" stroke="var(--gold-muted)" stroke-width="1" opacity="0.9"/>
+
+            <!-- ---- GRECIA (stilizzata) ---- -->
+            <path d="M 370 370 L 400 360 L 415 380 L 410 400 L 395 410 L 375 405 L 365 390 Z"
+              fill="#2a1a0e" stroke="var(--gold-muted)" stroke-width="1" opacity="0.9"/>
+
+            <!-- Corfù isola -->
+            <path d="M 355 400 L 365 395 L 370 410 L 360 415 Z"
+              fill="#2a1a0e" stroke="var(--gold-muted)" stroke-width="0.8" opacity="0.9"/>
+
+            <!-- ============================================================
+                 PIN LUOGHI — con tooltip
+                 ============================================================ -->
+
+            <!-- Cava de' Tirreni -->
+            <g class="map-pin" data-city="Cava de' Tirreni" data-desc="Il nostro primo sì ❤️" transform="translate(243, 440)">
+              <circle r="8" fill="var(--crimson)" opacity="0.9" filter="url(#glow)"/>
+              <circle r="4" fill="var(--gold)"/>
+              <text y="-14" text-anchor="middle" fill="var(--gold)" font-size="9" font-family="Montserrat" font-weight="500">Cava</text>
+            </g>
+
+            <!-- Capri -->
+            <g class="map-pin" data-city="Capri" data-desc="Il sapore del mare 🌊" transform="translate(253, 460)">
+              <circle r="6" fill="var(--crimson)" opacity="0.9" filter="url(#glow)"/>
+              <circle r="3" fill="var(--gold)"/>
+              <text y="-12" text-anchor="middle" fill="var(--gold)" font-size="8" font-family="Montserrat" font-weight="500">Capri</text>
+            </g>
+
+            <!-- Monopoli / Puglia -->
+            <g class="map-pin" data-city="Puglia" data-desc="La nostra prima vera vacanza 🌅" transform="translate(295, 420)">
+              <circle r="8" fill="var(--crimson)" opacity="0.9" filter="url(#glow)"/>
+              <circle r="4" fill="var(--gold)"/>
+              <text y="-14" text-anchor="middle" fill="var(--gold)" font-size="9" font-family="Montserrat" font-weight="500">Puglia</text>
+            </g>
+
+            <!-- Venezia -->
+            <g class="map-pin" data-city="Venezia" data-desc="Tra i canali e l'amore 🚤" transform="translate(233, 165)">
+              <circle r="7" fill="var(--crimson)" opacity="0.9" filter="url(#glow)"/>
+              <circle r="3.5" fill="var(--gold)"/>
+              <text y="-13" text-anchor="middle" fill="var(--gold)" font-size="9" font-family="Montserrat" font-weight="500">Venezia</text>
+            </g>
+
+            <!-- Verona -->
+            <g class="map-pin" data-city="Verona" data-desc="Il romanticismo di Verona 🌹" transform="translate(218, 180)">
+              <circle r="6" fill="var(--crimson)" opacity="0.9" filter="url(#glow)"/>
+              <circle r="3" fill="var(--gold)"/>
+              <text y="-12" text-anchor="middle" fill="var(--gold)" font-size="8" font-family="Montserrat" font-weight="500">Verona</text>
+            </g>
+
+            <!-- Corfù -->
+            <g class="map-pin" data-city="Corfù" data-desc="La nostra fuga greca ☀️" transform="translate(360, 407)">
+              <circle r="8" fill="var(--crimson)" opacity="0.9" filter="url(#glow)"/>
+              <circle r="4" fill="var(--gold)"/>
+              <text y="-14" text-anchor="middle" fill="var(--gold)" font-size="9" font-family="Montserrat" font-weight="500">Corfù</text>
+            </g>
+
+            <!-- Roma -->
+            <g class="map-pin" data-city="Roma" data-desc="Magia nella Capitale 🎄" transform="translate(248, 380)">
+              <circle r="7" fill="var(--crimson)" opacity="0.9" filter="url(#glow)"/>
+              <circle r="3.5" fill="var(--gold)"/>
+              <text y="-13" text-anchor="middle" fill="var(--gold)" font-size="9" font-family="Montserrat" font-weight="500">Roma</text>
+            </g>
+
+            <!-- Viareggio -->
+            <g class="map-pin" data-city="Viareggio" data-desc="Colori e sorrisi al Carnevale 🎭" transform="translate(200, 290)">
+              <circle r="7" fill="var(--crimson)" opacity="0.9" filter="url(#glow)"/>
+              <circle r="3.5" fill="var(--gold)"/>
+              <text y="-13" text-anchor="middle" fill="var(--gold)" font-size="9" font-family="Montserrat" font-weight="500">Viareggio</text>
+            </g>
+
+            <!-- Firenze -->
+            <g class="map-pin" data-city="Firenze" data-desc="La città dei fiori 🌸" transform="translate(218, 305)">
+              <circle r="7" fill="var(--crimson)" opacity="0.9" filter="url(#glow)"/>
+              <circle r="3.5" fill="var(--gold)"/>
+              <text y="-13" text-anchor="middle" fill="var(--gold)" font-size="9" font-family="Montserrat" font-weight="500">Firenze</text>
+            </g>
+
+          </svg>
+
+          <!-- Tooltip mappa -->
+          <div id="map-tooltip" class="map-tooltip hidden">
+            <strong id="tooltip-city"></strong>
+            <p id="tooltip-desc"></p>
+          </div>
+        </div>
+
+        <!-- VIAGGI — timeline alternata destra/sinistra -->
+        <div class="trips-timeline">
+
+          <div class="trips-line"></div>
+
+          <div class="trip-item reveal" data-side="left">
+            <div class="trip-dot"></div>
+            <div class="trip-card">
+              <div class="trip-date">Estate 2023</div>
+              <h4 class="trip-title">Il sapore del mare</h4>
+              <p class="trip-text">La nostra splendida giornata singola a Capri.</p>
+              <img src="foto/vacanze/1.jpeg" alt="descrizione" />
+            </div>
+          </div>
+
+          <div class="trip-item reveal" data-side="right">
+            <div class="trip-dot"></div>
+            <div class="trip-card">
+              <div class="trip-date">Agosto 2024</div>
+              <h4 class="trip-title">Il primo vero viaggio</h4>
+              <p class="trip-text">La nostra estate in Puglia, tra Monopoli, Gallipoli e Otranto.</p>
+              <img src="foto/vacanze/2.jpg" alt="descrizione" />
+            </div>
+          </div>
+
+          <div class="trip-item reveal" data-side="left">
+            <div class="trip-dot"></div>
+            <div class="trip-card">
+              <div class="trip-date">Dicembre 2024</div>
+              <h4 class="trip-title">Trulli e ulivi</h4>
+              <p class="trip-text">Alberobello e Locorotondo, tra i trulli e la magia del sud in inverno.</p>
+              <img src="foto/vacanze/3.png" alt="descrizione" />
+            </div>
+          </div>
+
+          <div class="trip-item reveal" data-side="right">
+            <div class="trip-dot"></div>
+            <div class="trip-card">
+              <div class="trip-date">Maggio 2024</div>
+              <h4 class="trip-title">La città dei fiori</h4>
+              <p class="trip-text">Firenze, tra arte, bellezza e le sue strade che sanno di storia.</p>
+              <img src="foto/vacanze/4.jpg" alt="descrizione" />
+            </div>
+          </div>
+
+          <div class="trip-item reveal" data-side="left">
+            <div class="trip-dot"></div>
+            <div class="trip-card">
+              <div class="trip-date">Primavera 2025</div>
+              <h4 class="trip-title">Tra i canali e l'amore</h4>
+              <p class="trip-text">Il nostro viaggio tra l'incanto di Venezia e il romanticismo di Verona.</p>
+              <img src="foto/vacanze/5.jpg" alt="descrizione" />
+            </div>
+          </div>
+
+          <div class="trip-item reveal" data-side="right">
+            <div class="trip-dot"></div>
+            <div class="trip-card">
+              <div class="trip-date">Agosto 2025</div>
+              <h4 class="trip-title">Sotto il sole della Grecia</h4>
+              <p class="trip-text">La nostra fuga estiva a Corfù.</p>
+              <img src="foto/vacanze/6.jpg" alt="descrizione" />
+            </div>
+          </div>
+
+          <div class="trip-item reveal" data-side="left">
+            <div class="trip-dot"></div>
+            <div class="trip-card">
+              <div class="trip-date">Natale 2025</div>
+              <h4 class="trip-title">Magia nella Capitale</h4>
+              <p class="trip-text">Il nostro magico weekend a Roma.</p>
+              <img src="foto/vacanze/7.jpeg" alt="descrizione" />
+            </div>
+          </div>
+
+          <div class="trip-item reveal" data-side="right">
+            <div class="trip-dot"></div>
+            <div class="trip-card">
+              <div class="trip-date">Carnevale 2026</div>
+              <h4 class="trip-title">Colori e sorrisi</h4>
+              <p class="trip-text">A Viareggio, per festeggiare insieme.</p>
+              <img src="foto/vacanze/8.jpeg" alt="descrizione" />
+            </div>
+          </div>
+
+        </div><!-- fine .trips-timeline -->
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 7: LE NOSTRE PROMESSE
+         ============================================================ -->
+    <section id="promises" class="section">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Da me a te</p>
+        <h2 class="section-title">Ti &nbsp;&nbsp;Prometto che:</h2>
+      </div>
+
+      <div class="promises-container">
+        <div class="promise-item reveal">
+          <div class="promise-number">I</div>
+          <p class="promise-text" data-text="Prometterò sempre di sceglierti. Anche dopo i litigi. Soprattutto dopo i litigi."></p>
+        </div>
+        <div class="promise-item reveal">
+          <div class="promise-number">II</div>
+          <p class="promise-text" data-text="Prometterò di costruire ricordi insieme, un viaggio alla volta, finché il mondo non finisce."></p>
+        </div>
+        <div class="promise-item reveal">
+          <div class="promise-number">III</div>
+          <p class="promise-text" data-text="Prometterò di amarti nei momenti facili e in quelli che fanno paura. Sempre. Tu sei la mia casa."></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 8: PAGINA SEGRETA (PASSWORD PROTETTA)
+         ============================================================ -->
+    <section id="secret" class="section">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Solo per te</p>
+        <h2 class="section-title">C'è un segreto...</h2>
+        <p class="section-subtitle">Se sai la parola magica, puoi entrare... fai un tentativo ✨</p>
+      </div>
+
+      <div class="secret-form reveal">
+        <div class="input-wrapper">
+          <input type="password" id="secret-input" placeholder="Password segreta..." autocomplete="off" />
+          <button id="secret-submit" aria-label="Entra">→</button>
+        </div>
+        <p id="secret-error" class="error-msg hidden">Non è quella giusta... eppure è quello che dici sempre...🤮 </p>
+      </div>
+
+      <!-- Contenuto segreto (inizialmente nascosto) -->
+      <div id="secret-content" class="hidden">
+        <div class="secret-inner">
+          <h3 class="secret-title">Questa pagina esiste solo per te</h3>
+          <!-- LETTERA CON EFFETTO TYPEWRITER -->
+          <div class="letter-container">
+            <p class="letter-text typewriter-letter" id="secret-letter"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEZIONE 9: GRAN FINALE
+         ============================================================ -->
+    <section id="finale" class="section">
+      <div class="finale-content">
+        <p class="section-eyebrow reveal">E questo è solo l'inizio</p>
+        <h2 class="finale-title reveal">
+          Se ho costruito un sito per ricordarti<br/>
+          che ti amo dopo un litigio,<br/>
+          <em>immagina cosa voglio costruire<br/>nel resto della vita con te.</em>
+        </h2>
+
+        <!-- EASTER EGG: tieni premuto 3 secondi -->
+        <button id="love-btn" class="btn-finale">
+          Ti amo Vincenza ❤️
+        </button>
+
+        <p class="easter-egg-hint">( tieni premuto il cuore per un segreto 🤫 )</p>
+
+        <!-- Easter egg message -->
+        <div id="easter-egg-msg" class="hidden">
+          <p>
+            <!-- 
+              ★★★ EASTER EGG ★★★
+              Scrivi qui il tuo messaggio ultra-privato.
+              Solo voi due lo capirete.
+            -->
+            Se non vuoi più litigare
+            il culetto mi devi dare ❤️🍑
+          </p>
+        </div>
+      </div>
+
+      <!-- Canvas per l'esplosione di cuori finale -->
+      <canvas id="finale-canvas"></canvas>
+
+      <!-- Lettere VINCENZA animate nel finale -->
+      <div id="vincenza-letters" class="hidden" aria-hidden="true"></div>
+    </section>
+
+  </main><!-- fine #main-site -->
+
+  <script src="script.js"></script>
+</body>
+</html>
